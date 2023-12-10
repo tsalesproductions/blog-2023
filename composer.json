@@ -1,0 +1,19 @@
+{
+    "name": "thiago/blog",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/App"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thiago Sales",
+            "email": "thiago_salests@hotmail.com"
+        }
+    ],
+    "require": {
+        "coffeecode/router": "^2.0",
+        "twig/twig": "^3.0",
+        "twig/intl-extra": "^3.7"
+    }
+}
