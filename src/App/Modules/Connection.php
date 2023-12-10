@@ -75,10 +75,11 @@
 	}
 
 	// Exemplo de uso:
-	//$db = new Connection('seu_host', 'seu_usuario', 'sua_senha', 'seu_banco');
+	$db = new Connection(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
 	// Consulta de seleção
-	//$results = $db->select('tabela', 'coluna1, coluna2', 'coluna1 = ? AND coluna2 = ?', ['valor1', 'valor2']);
+	$results = $db->select('banners', '*', '', []);
+	var_dump($results);
 
 	// Inserção
 	//$insertedId = $db->insert('tabela', ['coluna1' => 'valor1', 'coluna2' => 'valor2']);

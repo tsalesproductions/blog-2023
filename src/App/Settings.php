@@ -8,9 +8,9 @@
     define("APP_DIR_ADMIN", "src/Views/Admin/");
 
     # DATABASE SETTINGS
-    define("DB_HOST", "");
-    define("DB_USERNAME", "");
+    define("DB_HOST", "localhost");
+    define("DB_USERNAME", "root");
     define("DB_PASSWORD", "");
-    define("DB_DATABASE", "");
+    define("DB_DATABASE", "blog");
 
     # OTHERS SETTINGS
