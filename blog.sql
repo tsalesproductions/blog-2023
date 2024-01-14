@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 10-Dez-2023 às 22:53
+-- Tempo de geração: 14-Jan-2024 às 05:35
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.1.13
 
@@ -59,11 +59,18 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `show_in_menu` int NOT NULL DEFAULT '1',
-  `order` int DEFAULT '0',
+  `_order` int DEFAULT '0',
   `status` int NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `slug`, `show_in_menu`, `_order`, `status`, `created_at`) VALUES
+(1, 'teste', 'teste', 1, 0, 1, '2024-01-14 02:09:02');
 
 -- --------------------------------------------------------
 
@@ -79,6 +86,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `thumbnail` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   `categories` json NOT NULL,
+  `fixed` int NOT NULL DEFAULT '0',
+  `likes` int NOT NULL DEFAULT '0',
+  `views` int NOT NULL DEFAULT '0',
   `status` int NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
