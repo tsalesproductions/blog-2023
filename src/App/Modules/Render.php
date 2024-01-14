@@ -1,6 +1,8 @@
 <?php
     namespace App\Modules;
 
+    use App\Controller;
+
     class Render{
         public static function render($page, $params){
             
@@ -12,6 +14,11 @@
             # DEFAULT URL
             $twig->addGlobal('APP_URL', APP_URL);
             $twig->addGlobal('APP_PAGE', $page);
+
+            # CONTROLLER
+            $c = new Controller();
+            
+            $twig->addGlobal('APP_UTILS', $c->getAllData());
             
             echo $twig->render('default.html', $params);
         }

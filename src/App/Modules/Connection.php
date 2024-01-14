@@ -5,10 +5,15 @@
 
 	class Connection{
 		private $pdo;
+
+		private $host = DB_HOST;
+		private $username = DB_USERNAME;
+		private $password = DB_PASSWORD;
+		private $database = DB_DATABASE;
     
-		public function __construct($host, $username, $password, $database) {
+		public function __construct() {
 			try {
-				$this->pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+				$this->pdo = new PDO("mysql:host=$this->host;dbname=$this->database", $this->username, $this->password);
 				$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch (PDOException $e) {
 				die("Erro na conexão com o banco de dados: " . $e->getMessage());
@@ -25,10 +30,13 @@
 			}
 		}
 
-		public function select($table, $columns = '*', $where = '', $params = []) {
+		public function select($table, $columns = '*', $where = '', $order = '', $params = []) {
 			$sql = "SELECT $columns FROM $table";
 			if (!empty($where)) {
 				$sql .= " WHERE $where";
+			}
+			if (!empty($order)) {
+				$sql .= " ORDER BY $order";
 			}
 
 			$stmt = $this->query($sql, $params);
@@ -75,11 +83,11 @@
 	}
 
 	// Exemplo de uso:
-	$db = new Connection(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+	// $db = new Connection();
 
 	// Consulta de seleção
-	$results = $db->select('banners', '*', '', []);
-	var_dump($results);
+	// $results = $db->select('banners', '*', '', []);
+	// var_dump($results);
 
 	// Inserção
 	//$insertedId = $db->insert('tabela', ['coluna1' => 'valor1', 'coluna2' => 'valor2']);
